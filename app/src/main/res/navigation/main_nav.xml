@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@+id/navigation_home">
+    <fragment
+        android:id="@+id/navigation_home"
+        android:name="com.anniljing.jetpacknavigator.ui.home.HomeFragment"
+        android:label="@string/title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_navigation_home_to_secondActivity"
+            app:destination="@id/secondActivity"
+            app:enterAnim="@anim/slide_in_left"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_dashboard"
+        android:name="com.anniljing.jetpacknavigator.ui.dashboard.DashboardFragment"
+        android:label="@string/title_dashboard"
+        tools:layout="@layout/fragment_dashboard">
+        <!--定义跳转目标-->
+        <action
+            android:id="@+id/action_navigation_dashboard_to_dashBoardFragmentDetail"
+            app:destination="@id/dashBoardFragmentDetail"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_notifications"
+        android:name="com.anniljing.jetpacknavigator.ui.notifycation.NotificationFragment"
+        android:label="@string/title_notifications"
+        tools:layout="@layout/fragment_notifycation">
+        <action
+            android:id="@+id/toDetailFragment"
+            app:destination="@id/notificationDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"/>
+    </fragment>
+    <activity
+        android:id="@+id/secondActivity"
+        android:name="com.anniljing.jetpacknavigator.SecondActivity"
+        android:label="activity_second"
+        tools:layout="@layout/activity_second" />
+    <fragment
+        android:id="@+id/dashBoardFragmentDetail"
+        android:name="com.anniljing.jetpacknavigator.ui.dashboard.DashBoardFragmentDetail"
+        android:label="fragment_dash_board_detail"
+        tools:layout="@layout/fragment_dash_board_detail" />
+    <fragment
+        android:id="@+id/notificationDetailFragment"
+        android:name="com.anniljing.jetpacknavigator.ui.notifycation.NotificationDetailFragment"
+        android:label="fragment_notification_detail"
+        tools:layout="@layout/fragment_notification_detail">
+        <!--使用safe Args的时候，需要在目标上增加一下参数定义-->
+        <argument
+            android:name="content"
+            app:argType="string"/>
+    </fragment>
+</navigation>
